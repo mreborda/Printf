@@ -6,7 +6,7 @@
 /*   By: mreborda <mreborda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:48:16 by mreborda          #+#    #+#             */
-/*   Updated: 2022/11/23 11:53:35 by mreborda         ###   ########.fr       */
+/*   Updated: 2022/11/28 10:59:19 by mreborda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ int		ft_putstr(char *s);
 int		ft_putnbr(long int n);
 int		ft_print_u(unsigned int n);
 int		ft_hex_p(long unsigned int p);
+int		ft_hex_xx(long unsigned int x, int format);
+size_t	ft_xx_size(long unsigned int x);
 #endif

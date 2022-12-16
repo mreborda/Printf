@@ -1,12 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mreborda <mreborda@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/28 11:49:21 by mreborda          #+#    #+#              #
+#    Updated: 2022/11/28 11:49:23 by mreborda         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	= libftprintf.a
 
 SRCS	= ft_printf.c \
+		ft_count.c \
+		ft_hex_p.c \
+		ft_print_u.c \
 		ft_putchar.c \
 		ft_putnbr.c \
-		ft_putstr.c \
-		ft_print_u.c \
-		ft_count.c \
-		ft_hex_p.c
+		ft_putstr.c
 
 SRCSF	=  ft_atoi.c \
 		ft_isdigit.c \
@@ -22,6 +34,7 @@ SRCSF	=  ft_atoi.c \
 		ft_memset.c \
 		ft_calloc.c \
 		ft_putchar_fd.c \
+		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_putstr_fd.c \
 		ft_strchr.c \
@@ -35,41 +48,41 @@ SRCSF	=  ft_atoi.c \
 		ft_strncmp.c \
 		ft_strdup.c \
 		ft_strnstr.c \
-		ft_strrchr.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_strmapi.c \
 		ft_split.c \
-		ft_toupper.c 
+		ft_toupper.c \
+		ft_strtrim.c
 
-SRCSD	=$(addprefix libft/, $(SRCSF))
+SRCSD	= $(addprefix libft/, $(SRCSF))
 
-LIBFT	= libft/libft.a
+LIBFT = libft/libft.a
 
 OBJS	= ${SRCS:.c=.o}
 
 OBJSD	= ${SRCSF:.c=.o}
 
-CC	= clang
-
-CFLAGS 	= -Wall -Werror -Wextra
-
-RM		= rm -rf
+INCS	= ft_printf.h
 
 LIBC	= ar rcs
 
-INCS	= ft_printf.h
+CC		= clang
+
+RM		= rm -f
+
+CFLAGS	= -Wall -Wextra -Werror
 
 
 ${NAME}: libft.a ${OBJS}
 	cp ${LIBFT} .
-	mv libft.a $(NAME)
+	mv libft.a ${NAME}
 	${LIBC} ${NAME} ${OBJS}
 
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS} ${OBJSD} 
+	${RM} ${OBJS} ${OBJSD}
 
 libft.a:
 	cd libft && ${MAKE} all

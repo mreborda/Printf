@@ -6,7 +6,7 @@
 /*   By: mreborda <mreborda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:47:37 by mreborda          #+#    #+#             */
-/*   Updated: 2022/11/23 13:49:44 by mreborda         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:39:54 by mreborda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ size_t	print_convert(va_list arg, char c)
 	}
 	else if (c == 'p')
 		lenght = ft_hex_p(va_arg(arg, long unsigned int));
+	else if (c == 'x')
+		lenght = ft_hex_xx(va_arg(arg, unsigned int), 1);
+	else if (c == 'X')
+		lenght = ft_hex_xx(va_arg(arg, unsigned int), 0);
 	return (lenght);
 }
 
@@ -62,10 +66,13 @@ int	ft_printf(const char *str, ...)
 	return (lenght);
 }
 
-/* int	main(void)
+void main(void)
 {
-	printf("%d\n", ft_printf("char %p\n", 5));
-	printf("%d\n", ft_printf("string %s\n", "olaaa"));
-	printf("%d\n", ft_printf("pointer %p\n", (char *)-1));
-	printf("%p", (char *)-1);
-} */
+	char *c = "ola";
+	char *j = c;
+
+	ft_printf("%s\n", c);
+	ft_printf("%p\n", j);
+	printf("%s\n", c);
+	printf("%p\n", j);
+}
